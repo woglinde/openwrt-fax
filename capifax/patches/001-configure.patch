@@ -1,0 +1,12 @@
+diff --git a/capifax/configure.in b/capifax/configure.in
+index d4f6660..fcb69a6 100644
+--- a/capifax/configure.in
++++ b/capifax/configure.in
+@@ -34,7 +34,6 @@ AC_ARG_WITH(man,
+ 	AC_DEFINE(CONFIG_MANDIR,"${withval}", [capifax manual directory]),
+ )
+ 
+-AC_CHECK_FILE([../capi20/capi20.h],CPPFLAGS="-I ../capi20 $CPPFLAGS")
+ AC_CHECK_HEADER([capi20.h],[],[AC_MSG_ERROR([capi20.h not found])])
+ 
+ CS_TEST_ALERT

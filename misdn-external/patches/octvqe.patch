@@ -1,0 +1,29 @@
+--- a/drivers/isdn/mISDN/octvqe/octvqe_linux.c	2012-12-01 12:54:29.000000000 +0100
++++ b/drivers/isdn/mISDN/octvqe/octvqe_linux.c	2012-12-02 01:39:55.785905746 +0100
+@@ -27,6 +27,17 @@
+ 
+ \*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+ 
++#ifdef __X86__
++#include <asm/msr.h>
++#define GETTICK(x)                                                \
++({                                                                \
++         if (cpu_has_tsc)                                          \
++                 rdtscl(x);                                        \
++ })
++#else /* __i386__ */
++#define GETTICK(x)
++#endif /* __i386__ */
++
+ #include <linux/kernel.h>
+ #include <linux/errno.h>
+ #include <linux/module.h>
+@@ -539,7 +550,7 @@
+ 			wake_up_interruptible(&pChan->ReadWaitQueue);
+ 
+ 		/* Retrieve CPU time before processing. */
+-		rdtscl(pChan->ulTimestampIn);
++		GETTICK(pChan->ulTimestampIn);
+ 		}
+ 
+ 		if (fWakeUpWrite == 1) /* wake_up_interruptible waiting on write */

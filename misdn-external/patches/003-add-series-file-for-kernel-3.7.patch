@@ -1,0 +1,20 @@
+From 10268b1c42e7c10fc35ce4d825bf0e92a3a45b1b Mon Sep 17 00:00:00 2001
+From: Henning Heinold <heinold@inf.fu-berlin.de>
+Date: Sun, 23 Dec 2012 22:16:09 +0100
+Subject: [PATCH] add series file for kernel 3.7
+
+---
+ series/series_3.7 |    1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 series/series_3.7
+
+diff --git a/series/series_3.7 b/series/series_3.7
+new file mode 100644
+index 0000000..4297341
+--- /dev/null
++++ b/series/series_3.7
+@@ -0,0 +1 @@
++linux-3.5-Disable_hub-initiated_LPM.patch
+-- 
+1.7.10.4
+
